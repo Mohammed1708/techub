@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Techub | Comprehensive IT Solutions & Technology Services</title>
+    <meta name="description" content="Explore Techub's comprehensive IT services: Infrastructure & Cybersecurity, Application Development, Testing Centre, and IT Consulting solutions.">
+    
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS for Techub theme -->
+    <style>
+        /* TECHUB DESIGN SYSTEM - Navy Blue Theme */
+        :root {
+            /* Primary Colors - Navy Blue Theme */
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --dark-gray: #374151;
+            --border-gray: #d1d5db;
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            /* Spacing & Effects */
+            --border-radius: 0.5rem;
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Base Typography Styles */
+        .font-heading { font-family: var(--font-heading); }
+        .font-body { font-family: var(--font-body); }
+        
+        /* Custom Utility Classes */
+        .text-navy { color: var(--primary-navy); }
+        .bg-navy { background-color: var(--primary-navy); }
+        .text-primary-blue { color: var(--primary-blue); }
+        .bg-primary-blue { background-color: var(--primary-blue); }
+        .bg-light-gray { background-color: var(--light-gray); }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Navigation Styles */
+        .navbar-sticky {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Service Tab Styles */
+        .service-tab {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .service-tab.active {
+            background-color: var(--primary-navy);
+            color: white;
+        }
+        .service-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .service-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-body bg-white text-gray-900">
+    
+    <!-- NAVIGATION HEADER -->
+    <!-- Same navigation as other pages -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- LOGO SECTION -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-navy rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-xl">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-xl text-navy">Techub</span>
+                    </a>
+                </div>
+                
+                <!-- DESKTOP NAVIGATION MENU -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Home</a>
+                        <a href="about.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">About Us</a>
+                        <a href="services.html" class="text-navy hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Services</a>
+                        <a href="products.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Products</a>
+                        <a href="blog.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
+                        <a href="contact.html" class="bg-navy text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-blue transition-colors duration-200">Contact Us</a>
+                    </div>
+                </div>
+                
+                <!-- MOBILE MENU BUTTON -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-navy focus:outline-none focus:text-navy">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MOBILE NAVIGATION MENU -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-40">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-lg">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-lg text-navy">Techub</span>
+                    </div>
+                    <button id="mobile-menu-close" class="text-gray-600 hover:text-navy">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <a href="index.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Home</a>
+                    <a href="about.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">About Us</a>
+                    <a href="services.html" class="block text-navy font-medium py-2 border-b border-gray-200">Services</a>
+                    <a href="products.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Products</a>
+                    <a href="blog.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Blog</a>
+                    <a href="contact.html" class="block bg-navy text-white px-4 py-2 rounded-lg text-center mt-4 hover:bg-primary-blue transition-colors duration-200">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- PAGE HEADER -->
+    <!-- Services page hero section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-navy to-primary-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-heading font-bold text-4xl sm:text-5xl text-white mb-6">
+                Our Services
+            </h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                Comprehensive technology solutions designed to accelerate your business growth and digital transformation journey.
+            </p>
+        </div>
+    </section>
+    
+    <!-- SERVICES OVERVIEW SECTION -->
+    <!-- Quick overview of all services -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    Complete IT Solutions Portfolio
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    From infrastructure and security to custom development and strategic consulting, we provide end-to-end technology solutions.
+                </p>
+            </div>
+            
+            <!-- Service Categories Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                
+                <!-- Service Category 1 -->
+                <div class="text-center p-6 bg-light-gray rounded-xl hover-lift">
+                    <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-2">Infrastructure & Security</h3>
+                    <p class="text-gray-600 text-sm">Robust, secure IT infrastructure solutions</p>
+                </div>
+                
+                <!-- Service Category 2 -->
+                <div class="text-center p-6 bg-light-gray rounded-xl hover-lift">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-2">Application Development</h3>
+                    <p class="text-gray-600 text-sm">Custom software and mobile solutions</p>
+                </div>
+                
+                <!-- Service Category 3 -->
+                <div class="text-center p-6 bg-light-gray rounded-xl hover-lift">
+                    <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-vial text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-2">Testing & Procurement</h3>
+                    <p class="text-gray-600 text-sm">Quality assurance and IT procurement</p>
+                </div>
+                
+                <!-- Service Category 4 -->
+                <div class="text-center p-6 bg-light-gray rounded-xl hover-lift">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-2">IT Consulting</h3>
+                    <p class="text-gray-600 text-sm">Strategic technology consulting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- DETAILED SERVICES SECTION -->
+    <!-- Comprehensive service details with tabs -->
+    <section class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Service Navigation Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="service-tab active px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 bg-navy text-white" data-service="infrastructure">
+                    <i class="fas fa-shield-alt mr-2"></i>Infrastructure & Cybersecurity
+                </button>
+                <button class="service-tab px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 bg-white text-navy border border-gray-200 hover:bg-gray-50" data-service="development">
+                    <i class="fas fa-code mr-2"></i>Application Development
+                </button>
+                <button class="service-tab px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 bg-white text-navy border border-gray-200 hover:bg-gray-50" data-service="testing">
+                    <i class="fas fa-vial mr-2"></i>Testing & Services
+                </button>
+                <button class="service-tab px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 bg-white text-navy border border-gray-200 hover:bg-gray-50" data-service="consulting">
+                    <i class="fas fa-lightbulb mr-2"></i>IT Consulting
+                </button>
+            </div>
+            
+            <!-- SERVICE 1: IT INFRASTRUCTURE & CYBERSECURITY -->
+            <div id="infrastructure" class="service-content active">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Service Image/Visual -->
+                        <div class="bg-gradient-to-br from-navy to-primary-blue p-12 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-shield-alt text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-4">Secure Infrastructure Solutions</h3>
+                                <p class="text-gray-200">Protecting your digital assets with enterprise-grade security</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Details -->
+                        <div class="p-12">
+                            <h3 class="font-heading font-bold text-3xl text-navy mb-6">
+                                IT Infrastructure & Cybersecurity
+                            </h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">
+                                 We provide reliable IT Infrastructure and Cybersecurity solutions to support sustainable digital transformation. Our services include planning, implementation, and protection of data and systems from cyber threats using the latest technology. We are committed to delivering the best service to our partners and clients, ensuring secure, efficient solutions tailored to meet their business needs.
+                            </p>
+                            
+                            <!-- Service Features -->
+                            <div class="space-y-6 mb-8">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-database text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Data Hall Center</h4>
+                                        <p class="text-gray-600 text-sm">State-of-the-art data centers with 99.9% uptime guarantee, redundant power systems, and climate-controlled environments for optimal server performance.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-network-wired text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Network Operation Center (NOC)</h4>
+                                        <p class="text-gray-600 text-sm">24/7 network monitoring and management services ensuring optimal network performance, proactive issue resolution, and minimal downtime.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-tools text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Managed Services</h4>
+                                        <p class="text-gray-600 text-sm">Complete IT infrastructure management including server maintenance, security updates, backup management, and performance optimization.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="contact.html" class="inline-flex items-center bg-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue transition-colors duration-300">
+                                Get Infrastructure Quote
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SERVICE 2: IT APPLICATION & DEVELOPMENT -->
+            <div id="development" class="service-content">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Service Image/Visual -->
+                        <div class="bg-gradient-to-br from-primary-blue to-navy p-12 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-code text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-4">Custom Development Solutions</h3>
+                                <p class="text-gray-200">Building innovative applications that drive business success</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Details -->
+                        <div class="p-12">
+                            <h3 class="font-heading font-bold text-3xl text-navy mb-6">
+                                IT Application & Development
+                            </h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">
+                                Techub provides IT application solutions that support digital transformation for businesses, both internally and externally. We offer a comprehensive range of services, from planning, requirements analysis, design, and development to implementation and maintenance of applications aligned with business goals.                            
+                            </p>
+                            <!-- Service Features -->
+                            <div class="space-y-6 mb-8">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-briefcase text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Jobshub Platform</h4>
+                                        <p class="text-gray-600 text-sm">Comprehensive job management and recruitment platform with advanced matching algorithms, applicant tracking, and integrated communication tools.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-cash-register text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Cashier Solutions</h4>
+                                        <p class="text-gray-600 text-sm">Modern point-of-sale systems with inventory management, payment processing, sales analytics, and multi-location support for retail businesses.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-graduation-cap text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">MyBinawan System</h4>
+                                        <p class="text-gray-600 text-sm">Integrated educational management system with student information management, course scheduling, grade tracking, and parent communication features.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-mobile-alt text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Web & Mobile Applications</h4>
+                                        <p class="text-gray-600 text-sm">Custom web and mobile application development using modern frameworks, responsive design, and cross-platform compatibility.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="contact.html" class="inline-flex items-center bg-primary-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-navy transition-colors duration-300">
+                                Start Your Project
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SERVICE 3: IT SERVICES & TESTING CENTRE -->
+            <div id="testing" class="service-content">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Service Image/Visual -->
+                        <div class="bg-gradient-to-br from-navy to-primary-blue p-12 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-vial text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-4">Quality Assurance & Testing</h3>
+                                <p class="text-gray-200">Ensuring reliability through comprehensive testing solutions</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Details -->
+                        <div class="p-12">
+                            <h3 class="font-heading font-bold text-3xl text-navy mb-6">
+                                IT Services & Testing Centre
+                            </h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">
+                                Techub provides IT Service and Testing Centre solutions to support digital transformation, ensuring reliable IT infrastructure and comprehensive testing of applications and systems to guarantee quality, security, and sustainable operational efficiency.
+                            </p>
+                            
+                            <!-- Service Features -->
+                            <div class="space-y-6 mb-8">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-desktop text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Binawan Computer Based Test</h4>
+                                        <p class="text-gray-600 text-sm">Advanced computer-based testing platform with secure exam delivery, automated grading, detailed analytics, and anti-cheating measures.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-shopping-cart text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Software Procurement</h4>
+                                        <p class="text-gray-600 text-sm">Strategic software acquisition services including vendor evaluation, license management, cost optimization, and implementation support.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-server text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Hardware IT Solutions</h4>
+                                        <p class="text-gray-600 text-sm">Complete hardware procurement and deployment services including servers, networking equipment, workstations, and peripheral devices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="contact.html" class="inline-flex items-center bg-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue transition-colors duration-300">
+                                Request Testing Services
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SERVICE 4: IT CONSULTANT -->
+            <div id="consulting" class="service-content">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="grid lg:grid-cols-2 gap-0">
+                        <!-- Service Image/Visual -->
+                        <div class="bg-gradient-to-br from-primary-blue to-navy p-12 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <i class="fas fa-lightbulb text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-4">Strategic IT Consulting</h3>
+                                <p class="text-gray-200">Guiding your digital transformation journey</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Details -->
+                        <div class="p-12">
+                            <h3 class="font-heading font-bold text-3xl text-navy mb-6">
+                                IT Consultant
+                            </h3>
+                            <p class="text-gray-600 mb-8 leading-relaxed">
+                                Techub provides IT consulting services to help companies navigate digital transformation, offering strategic guidance and tailored solutions to optimize technology usage.
+                             </p>
+                            
+                            <!-- Service Features -->
+                            <div class="space-y-6 mb-8">
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-cogs text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">DevOps Configuration</h4>
+                                        <p class="text-gray-600 text-sm">Streamline your development and operations with automated CI/CD pipelines, infrastructure as code, and containerization strategies.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-chart-bar text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">ERP Implementation</h4>
+                                        <p class="text-gray-600 text-sm">Enterprise resource planning system selection, customization, and implementation to integrate and optimize your business processes.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-users text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">Talent Outsourcing</h4>
+                                        <p class="text-gray-600 text-sm">Access skilled IT professionals through our talent outsourcing services, providing flexible staffing solutions for your projects.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fas fa-brain text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-navy mb-2">IoT & Machine Learning</h4>
+                                        <p class="text-gray-600 text-sm">Leverage emerging technologies with IoT device integration, data analytics, and machine learning solutions to gain competitive advantages.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <a href="contact.html" class="inline-flex items-center bg-primary-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-navy transition-colors duration-300">
+                                Schedule Consultation
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PROCESS SECTION -->
+    <!-- How we work with clients -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    Our Process
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    A proven methodology that ensures successful project delivery and client satisfaction.
+                </p>
+            </div>
+            
+            <!-- Process Steps -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-6 relative">
+                        <span class="text-white font-bold text-xl">1</span>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary-blue rounded-full flex items-center justify-center">
+                            <i class="fas fa-comments text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-4">Discovery & Analysis</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        We start by understanding your business needs, challenges, and objectives through comprehensive consultation and analysis.
+                    </p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-6 relative">
+                        <span class="text-white font-bold text-xl">2</span>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-navy rounded-full flex items-center justify-center">
+                            <i class="fas fa-drafting-compass text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-4">Strategy & Planning</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Develop a comprehensive strategy and detailed project plan with clear milestones, timelines, and deliverables.
+                    </p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mx-auto mb-6 relative">
+                        <span class="text-white font-bold text-xl">3</span>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-primary-blue rounded-full flex items-center justify-center">
+                            <i class="fas fa-hammer text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-4">Implementation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Execute the solution with regular progress updates, quality checkpoints, and continuous communication throughout the process.
+                    </p>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-6 relative">
+                        <span class="text-white font-bold text-xl">4</span>
+                        <div class="absolute -top-2 -right-2 w-6 h-6 bg-navy rounded-full flex items-center justify-center">
+                            <i class="fas fa-rocket text-white text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading font-semibold text-lg text-navy mb-4">Launch & Support</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Deploy the solution and provide ongoing support, maintenance, and optimization to ensure continued success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CALL TO ACTION SECTION -->
+    <!-- Encourage visitors to get started -->
+    <section class="py-20 bg-navy">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-6">
+                Ready to Transform Your Business?
+            </h2>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Let's discuss your technology needs and create a customized solution that drives your business forward.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="contact.html" class="bg-white text-navy px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover-lift">
+                    Start Your Project
+                </a>
+                <a href="products.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-navy transition-all duration-300">
+                    View Our Products
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER SECTION -->
+    <!-- Same footer as other pages -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-primary-blue rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-xl">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-xl">Techub</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+                        Leading IT solutions provider delivering comprehensive technology services that drive business growth and digital transformation.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Services</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Products</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary-blue"></i>
+                            info@techub.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-primary-blue"></i>
+                            +62 21 1234 5678
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-primary-blue mt-1"></i>
+                            Jakarta, Indonesia
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Techub. All rights reserved. | Part of Binawan Group Ecosystem</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // NAVIGATION SCROLL EFFECT
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-sticky');
+            } else {
+                navbar.classList.remove('navbar-sticky');
+            }
+        });
+        
+        // MOBILE MENU FUNCTIONALITY
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+        
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // SERVICE TAB FUNCTIONALITY
+        // Handle service tab switching
+        const serviceTabs = document.querySelectorAll('.service-tab');
+        const serviceContents = document.querySelectorAll('.service-content');
+        
+        serviceTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const targetService = this.getAttribute('data-service');
+                
+                // Remove active class from all tabs and contents
+                serviceTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.add('bg-white', 'text-navy', 'border', 'border-gray-200', 'hover:bg-gray-50');
+                    t.classList.remove('bg-navy', 'text-white');
+                });
+                
+                serviceContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                this.classList.remove('bg-white', 'text-navy', 'border', 'border-gray-200', 'hover:bg-gray-50');
+                this.classList.add('bg-navy', 'text-white');
+                
+                document.getElementById(targetService).classList.add('active');
+            });
+        });
+        
+        // SCROLL ANIMATIONS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply animation to cards
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

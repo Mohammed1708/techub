@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Techub | Innovative Software Solutions & Digital Products</title>
+    <meta name="description" content="Discover Techub's flagship products: Jobshub recruitment platform, Cashier.id POS system, and MyBinawan educational management system.">
+    
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS for Techub theme -->
+    <style>
+        /* TECHUB DESIGN SYSTEM - Navy Blue Theme */
+        :root {
+            /* Primary Colors - Navy Blue Theme */
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --dark-gray: #374151;
+            --border-gray: #d1d5db;
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            /* Spacing & Effects */
+            --border-radius: 0.5rem;
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Base Typography Styles */
+        .font-heading { font-family: var(--font-heading); }
+        .font-body { font-family: var(--font-body); }
+        
+        /* Custom Utility Classes */
+        .text-navy { color: var(--primary-navy); }
+        .bg-navy { background-color: var(--primary-navy); }
+        .text-primary-blue { color: var(--primary-blue); }
+        .bg-primary-blue { background-color: var(--primary-blue); }
+        .bg-light-gray { background-color: var(--light-gray); }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Navigation Styles */
+        .navbar-sticky {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Product Card Animations */
+        .product-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        .product-image {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Feature List Styles */
+        .feature-check {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+        }
+    </style>
+</head>
+<body class="font-body bg-white text-gray-900">
+    
+    <!-- NAVIGATION HEADER -->
+    <!-- Same navigation as other pages -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- LOGO SECTION -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-navy rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-xl">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-xl text-navy">Techub</span>
+                    </a>
+                </div>
+                
+                <!-- DESKTOP NAVIGATION MENU -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Home</a>
+                        <a href="about.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">About Us</a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Services</a>
+                        <a href="products.html" class="text-navy hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Products</a>
+                        <a href="blog.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
+                        <a href="contact.html" class="bg-navy text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-blue transition-colors duration-200">Contact Us</a>
+                    </div>
+                </div>
+                
+                <!-- MOBILE MENU BUTTON -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-navy focus:outline-none focus:text-navy">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MOBILE NAVIGATION MENU -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-40">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-lg">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-lg text-navy">Techub</span>
+                    </div>
+                    <button id="mobile-menu-close" class="text-gray-600 hover:text-navy">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <a href="index.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Home</a>
+                    <a href="about.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">About Us</a>
+                    <a href="services.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Services</a>
+                    <a href="products.html" class="block text-navy font-medium py-2 border-b border-gray-200">Products</a>
+                    <a href="blog.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Blog</a>
+                    <a href="contact.html" class="block bg-navy text-white px-4 py-2 rounded-lg text-center mt-4 hover:bg-primary-blue transition-colors duration-200">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- PAGE HEADER -->
+    <!-- Products page hero section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-navy to-primary-blue">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="font-heading font-bold text-4xl sm:text-5xl text-navy mb-6">
+                Our Products
+            </h1>
+            <p class="text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed">
+                Innovative software solutions designed to streamline operations, enhance productivity, and drive business success across various industries.
+            </p>
+        </div>
+    </section>
+    
+    <!-- PRODUCTS OVERVIEW SECTION -->
+    <!-- Quick overview of all products -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    Flagship Product Portfolio
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Three powerful platforms that have transformed how businesses manage recruitment, sales, and education.
+                </p>
+            </div>
+            
+            <!-- Product Stats -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="text-center p-6 bg-light-gray rounded-xl">
+                    <div class="text-3xl font-bold text-navy mb-2">10,000+</div>
+                    <div class="text-gray-600">Active Users</div>
+                </div>
+                <div class="text-center p-6 bg-light-gray rounded-xl">
+                    <div class="text-3xl font-bold text-navy mb-2">500+</div>
+                    <div class="text-gray-600">Companies Served</div>
+                </div>
+                <div class="text-center p-6 bg-light-gray rounded-xl">
+                    <div class="text-3xl font-bold text-navy mb-2">99.9%</div>
+                    <div class="text-gray-600">Uptime Guarantee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PRODUCT 1: JOBSHUB -->
+    <!-- Comprehensive recruitment platform -->
+    <section class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Product Visual -->
+                <div class="relative">
+                    <div class="product-card bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="h-80 bg-gradient-to-br from-navy to-primary-blue flex items-center justify-center product-image">
+                            <div class="text-center text-white">
+                                <i class="fas fa-briefcase text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-2">Jobshub</h3>
+                                <p class="text-gray-200">Recruitment Made Simple</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-navy text-white px-3 py-1 rounded-full text-sm font-medium">HR Platform</span>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span class="text-sm">5,000+ Companies</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600">
+                                <span>Web & Mobile App</span>
+                                <span>Cloud-Based</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Details -->
+                <div>
+                    <div class="mb-6">
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm font-medium">Featured Product</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                        Jobshub Platform
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Revolutionary recruitment platform that connects employers with top talent through intelligent matching algorithms, streamlined application processes, and comprehensive candidate management tools.
+                    </p>
+                    
+                    <!-- Key Features -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Smart Job Matching</h4>
+                                <p class="text-gray-600 text-sm">AI-powered algorithms match candidates with relevant job opportunities based on skills, experience, and preferences.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Applicant Tracking System</h4>
+                                <p class="text-gray-600 text-sm">Complete recruitment workflow management from job posting to candidate onboarding.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Integrated Communication</h4>
+                                <p class="text-gray-600 text-sm">Built-in messaging, video interviews, and collaboration tools for seamless recruitment communication.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Analytics & Reporting</h4>
+                                <p class="text-gray-600 text-sm">Comprehensive recruitment analytics, performance metrics, and customizable reporting dashboards.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="contact.html" class="bg-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue transition-colors duration-300 text-center">
+                            Request Demo
+                        </a>
+                        <a href="#" class="border-2 border-navy text-navy px-6 py-3 rounded-lg font-semibold hover:bg-navy hover:text-white transition-all duration-300 text-center">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PRODUCT 2: CASHIER.ID -->
+    <!-- Modern POS system -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Product Details -->
+                <div>
+                    <div class="mb-6">
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm font-medium">Retail Solution</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                        Cashier.id POS System
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Modern point-of-sale system designed for retail businesses of all sizes. Streamline transactions, manage inventory, and gain valuable insights into your business performance with our comprehensive POS solution.
+                    </p>
+                    
+                    <!-- Key Features -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Multi-Payment Processing</h4>
+                                <p class="text-gray-600 text-sm">Accept cash, cards, digital wallets, and mobile payments with secure transaction processing.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Inventory Management</h4>
+                                <p class="text-gray-600 text-sm">Real-time stock tracking, automated reorder alerts, and comprehensive product catalog management.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Sales Analytics</h4>
+                                <p class="text-gray-600 text-sm">Detailed sales reports, customer insights, and business performance analytics to drive growth.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Multi-Location Support</h4>
+                                <p class="text-gray-600 text-sm">Manage multiple store locations with centralized reporting and synchronized inventory.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="contact.html" class="bg-primary-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-navy transition-colors duration-300 text-center">
+                            Start Free Trial
+                        </a>
+                        <a href="#" class="border-2 border-primary-blue text-primary-blue px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue hover:text-white transition-all duration-300 text-center">
+                            View Pricing
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product Visual -->
+                <div class="relative">
+                    <div class="product-card bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="h-80 bg-gradient-to-br from-primary-blue to-navy flex items-center justify-center product-image">
+                            <div class="text-center text-white">
+                                <i class="fas fa-cash-register text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-2">Cashier.id</h3>
+                                <p class="text-gray-200">Smart POS Solution</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-primary-blue text-white px-3 py-1 rounded-full text-sm font-medium">POS System</span>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-store mr-2"></i>
+                                    <span class="text-sm">2,000+ Stores</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600">
+                                <span>Cloud & On-Premise</span>
+                                <span>24/7 Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PRODUCT 3: MYBINAWAN -->
+    <!-- Educational management system -->
+    <section class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Product Visual -->
+                <div class="relative">
+                    <div class="product-card bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="h-80 bg-gradient-to-br from-navy to-primary-blue flex items-center justify-center product-image">
+                            <div class="text-center text-white">
+                                <i class="fas fa-graduation-cap text-6xl mb-6 opacity-80"></i>
+                                <h3 class="font-heading font-bold text-2xl mb-2">MyBinawan</h3>
+                                <p class="text-gray-200">Education Management</p>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-navy text-white px-3 py-1 rounded-full text-sm font-medium">EdTech Platform</span>
+                                <div class="flex items-center text-gray-500">
+                                    <i class="fas fa-school mr-2"></i>
+                                    <span class="text-sm">100+ Institutions</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600">
+                                <span>Web-Based Platform</span>
+                                <span>Mobile Friendly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Details -->
+                <div>
+                    <div class="mb-6">
+                        <span class="bg-navy text-white px-4 py-2 rounded-full text-sm font-medium">Education Platform</span>
+                    </div>
+                    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                        MyBinawan System
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Comprehensive educational management system that streamlines academic operations, enhances student engagement, and improves communication between students, teachers, and parents in educational institutions.
+                    </p>
+                    
+                    <!-- Key Features -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Student Information Management</h4>
+                                <p class="text-gray-600 text-sm">Complete student profiles, enrollment tracking, academic records, and attendance management.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Course & Schedule Management</h4>
+                                <p class="text-gray-600 text-sm">Automated timetable generation, course planning, and resource allocation for optimal scheduling.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Grade Tracking & Assessment</h4>
+                                <p class="text-gray-600 text-sm">Digital gradebook, assignment management, and comprehensive assessment tools with progress tracking.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 feature-check rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-navy mb-1">Parent Communication Portal</h4>
+                                <p class="text-gray-600 text-sm">Real-time updates, progress reports, and direct communication channels between parents and teachers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="contact.html" class="bg-navy text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue transition-colors duration-300 text-center">
+                            Schedule Demo
+                        </a>
+                        <a href="#" class="border-2 border-navy text-navy px-6 py-3 rounded-lg font-semibold hover:bg-navy hover:text-white transition-all duration-300 text-center">
+                            Case Studies
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PRODUCT COMPARISON SECTION -->
+    <!-- Feature comparison table -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    Product Comparison
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Choose the right solution for your business needs with our comprehensive product comparison.
+                </p>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <thead class="bg-navy text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left font-semibold">Features</th>
+                            <th class="px-6 py-4 text-center font-semibold">Jobshub</th>
+                            <th class="px-6 py-4 text-center font-semibold">Cashier.id</th>
+                            <th class="px-6 py-4 text-center font-semibold">MyBinawan</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-light-gray transition-colors duration-200">
+                            <td class="px-6 py-4 font-medium text-navy">Industry Focus</td>
+                            <td class="px-6 py-4 text-center text-gray-600">HR & Recruitment</td>
+                            <td class="px-6 py-4 text-center text-gray-600">Retail & Commerce</td>
+                            <td class="px-6 py-4 text-center text-gray-600">Education</td>
+                        </tr>
+                        <tr class="hover:bg-light-gray transition-colors duration-200">
+                            <td class="px-6 py-4 font-medium text-navy">User Base</td>
+                            <td class="px-6 py-4 text-center text-gray-600">5,000+ Companies</td>
+                            <td class="px-6 py-4 text-center text-gray-600">2,000+ Stores</td>
+                            <td class="px-6 py-4 text-center text-gray-600">100+ Institutions</td>
+                        </tr>
+                        <tr class="hover:bg-light-gray transition-colors duration-200">
+                            <td class="px-6 py-4 font-medium text-navy">Mobile App</td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                        </tr>
+                        <tr class="hover:bg-light-gray transition-colors duration-200">
+                            <td class="px-6 py-4 font-medium text-navy">Cloud-Based</td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                        </tr>
+                        <tr class="hover:bg-light-gray transition-colors duration-200">
+                            <td class="px-6 py-4 font-medium text-navy">Analytics & Reporting</td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                        </tr>
+                        <tr class="hover:bg-light-gray transition-colors duration-200">
+                            <td class="px-6 py-4 font-medium text-navy">24/7 Support</td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                            <td class="px-6 py-4 text-center"><i class="fas fa-check text-green-500"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TESTIMONIALS SECTION -->
+    <!-- Client testimonials for products -->
+    <section class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    What Our Clients Say
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Hear from businesses that have transformed their operations with our products.
+                </p>
+            </div>
+            
+            <!-- Testimonials Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Testimonial 1 - Jobshub -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-briefcase text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy">Jobshub User</h4>
+                            <p class="text-gray-600 text-sm">HR Director</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "Jobshub has revolutionized our recruitment process. The AI matching feature has reduced our time-to-hire by 60% and improved candidate quality significantly."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 - Cashier.id -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-cash-register text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy">Cashier.id User</h4>
+                            <p class="text-gray-600 text-sm">Store Manager</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "The inventory management features in Cashier.id have eliminated stockouts and reduced our inventory costs by 25%. It's incredibly user-friendly."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 - MyBinawan -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-navy">MyBinawan User</h4>
+                            <p class="text-gray-600 text-sm">School Principal</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        "MyBinawan has streamlined our entire academic operation. Parent engagement has increased dramatically with the communication portal."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CALL TO ACTION SECTION -->
+    <!-- Encourage product trials and demos -->
+    <section class="py-20 bg-navy">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-6">
+                Ready to Transform Your Business?
+            </h2>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Experience the power of our products with a free trial or personalized demo. See how our solutions can drive your business success.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="contact.html" class="bg-white text-navy px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover-lift">
+                    Request Demo
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-navy transition-all duration-300">
+                    Start Free Trial
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER SECTION -->
+    <!-- Same footer as other pages -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-primary-blue rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-xl">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-xl">Techub</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+                        Leading IT solutions provider delivering comprehensive technology services that drive business growth and digital transformation.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Services</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Products</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary-blue"></i>
+                            info@techub.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-primary-blue"></i>
+                            +62 21 1234 5678
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-primary-blue mt-1"></i>
+                            Jakarta, Indonesia
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Techub. All rights reserved. | Part of Binawan Group Ecosystem</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // NAVIGATION SCROLL EFFECT
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-sticky');
+            } else {
+                navbar.classList.remove('navbar-sticky');
+            }
+        });
+        
+        // MOBILE MENU FUNCTIONALITY
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+        
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // SCROLL ANIMATIONS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply animation to cards
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+        
+        // PRODUCT CARD HOVER EFFECTS
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techub - Leading IT Solutions & Technology Services</title>
+    <meta name="description" content="Techub provides comprehensive IT infrastructure, cybersecurity, application development, and consulting services. Your trusted technology partner.">
+    
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS for Techub theme -->
+    <style>
+        /* TECHUB DESIGN SYSTEM - Navy Blue Theme */
+        :root {
+            /* Primary Colors - Navy Blue Theme */
+            --primary-navy: #1e3a8a;
+            --primary-blue: #3b82f6;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --dark-gray: #374151;
+            --border-gray: #d1d5db;
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            
+            /* Spacing & Effects */
+            --border-radius: 0.5rem;
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Base Typography Styles */
+        .font-heading { font-family: var(--font-heading); }
+        .font-body { font-family: var(--font-body); }
+        
+        /* Custom Utility Classes */
+        .text-navy { color: var(--primary-navy); }
+        .bg-navy { background-color: var(--primary-navy); }
+        .text-primary-blue { color: var(--primary-blue); }
+        .bg-primary-blue { background-color: var(--primary-blue); }
+        .bg-light-gray { background-color: var(--light-gray); }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+        
+        /* Navigation Styles */
+        .navbar-sticky {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Gradient Text Effect */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-body bg-white text-gray-900">
+    
+    <!-- NAVIGATION HEADER -->
+    <!-- Responsive navigation with mobile menu toggle -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                
+                <!-- LOGO SECTION -->
+                <!-- Company logo with navy blue theme -->
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 bg-navy rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-xl">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-xl text-navy">Techub</span>
+                    </a>
+                </div>
+                
+                <!-- DESKTOP NAVIGATION MENU -->
+                <!-- Main navigation links for desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-navy hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Home</a>
+                        <a href="about.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">About Us</a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Services</a>
+                        <a href="products.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Products</a>
+                        <a href="blog.html" class="text-gray-600 hover:text-primary-blue px-3 py-2 text-sm font-medium transition-colors duration-200">Blog</a>
+                        <a href="contact.html" class="bg-navy text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-blue transition-colors duration-200">Contact Us</a>
+                    </div>
+                </div>
+                
+                <!-- MOBILE MENU BUTTON -->
+                <!-- Hamburger menu for mobile devices -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-navy focus:outline-none focus:text-navy">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MOBILE NAVIGATION MENU -->
+        <!-- Slide-out menu for mobile devices -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-40">
+            <div class="p-4">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-navy rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-lg">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-lg text-navy">Techub</span>
+                    </div>
+                    <button id="mobile-menu-close" class="text-gray-600 hover:text-navy">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <a href="index.html" class="block text-navy font-medium py-2 border-b border-gray-200">Home</a>
+                    <a href="about.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">About Us</a>
+                    <a href="services.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Services</a>
+                    <a href="products.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Products</a>
+                    <a href="blog.html" class="block text-gray-600 hover:text-navy py-2 border-b border-gray-200">Blog</a>
+                    <a href="contact.html" class="block bg-navy text-white px-4 py-2 rounded-lg text-center mt-4 hover:bg-primary-blue transition-colors duration-200">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- HERO SECTION -->
+    <!-- Main banner with video background and call-to-action -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Video/Image Placeholder -->
+        <div class="absolute inset-0 bg-gradient-to-br from-navy via-primary-blue to-navy opacity-90"></div>
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl mb-6 leading-tight">
+                Transforming Business Through 
+                <span class="block gradient-text text-white">Innovative Technology</span>
+            </h1>
+            <p class="text-xl sm:text-2xl mb-8 text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                Leading IT solutions provider specializing in infrastructure, cybersecurity, application development, and digital transformation services.
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="services.html" class="bg-white text-navy px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover-lift">
+                    Explore Our Services
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-navy transition-all duration-300">
+                    Get Started Today
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+    
+    <!-- COMPANY INTRODUCTION SECTION -->
+    <!-- Brief about Techub for introduction purposes -->
+    <section class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    About Techub
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                   Part of Binawan Group, Binawan Inti Technology - Techub operates within the technology ecosystem, offering solutions for digital transformation both internally and externally for businesses. We are committed to driving change to create a better digital environment with sustainable impact.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Company Description -->
+                <div>
+                    <h3 class="font-heading font-semibold text-2xl text-navy mb-6">
+                        Empowering Businesses with Technology Excellence
+                    </h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        At Techub, we combine deep technical expertise with innovative solutions to help organizations navigate the digital landscape. Our comprehensive suite of services spans from robust IT infrastructure to cutting-edge application development.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        As part of the Binawan Group ecosystem, we leverage extensive industry experience to deliver solutions that not only meet today's challenges but anticipate tomorrow's opportunities.
+                    </p>
+                    
+                    <!-- Key Stats -->
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-navy mb-2">500+</div>
+                            <div class="text-gray-600">Projects Completed</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-navy mb-2">50+</div>
+                            <div class="text-gray-600">Enterprise Clients</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Company Image Placeholder -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-navy to-primary-blue rounded-2xl p-8 text-white text-center">
+                        <i class="fas fa-building text-6xl mb-4 opacity-80 text-blue-900"></i>
+                        <h4 class="font-heading font-semibold text-gray-800 text-xl mb-2">Modern IT Solutions</h4>
+                        <p class="text-gray-800">Delivering excellence through innovation and expertise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SERVICES HIGHLIGHT SECTION -->
+    <!-- Showcase of main service categories -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-bold text-3xl sm:text-4xl text-navy mb-6">
+                    Our Core Services
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Comprehensive technology solutions designed to accelerate your business growth and digital transformation journey.
+                </p>
+            </div>
+            
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Service 1: IT Infrastructure & Cybersecurity -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift border border-gray-100">
+                    <div class="w-16 h-16 bg-navy rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-xl text-navy mb-4">
+                        IT Infrastructure & Cybersecurity
+                    </h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Secure, scalable infrastructure solutions including data centers, network operations, and managed services.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Data Hall Center</li>
+                        <li>• Network Operation Center</li>
+                        <li>• Managed Services</li>
+                    </ul>
+                    <a href="services.html#infrastructure" class="text-primary-blue font-semibold hover:text-navy transition-colors duration-200">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2: IT Application & Development -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-blue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-xl text-navy mb-4">
+                        IT Application & Development
+                    </h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Custom software solutions and innovative applications tailored to your business needs.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Jobshub Platform</li>
+                        <li>• Cashier Solutions</li>
+                        <li>• MyBinawan System</li>
+                        <li>• Web & Mobile Apps</li>
+                    </ul>
+                    <a href="services.html#development" class="text-primary-blue font-semibold hover:text-navy transition-colors duration-200">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3: IT Services & Testing Centre -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift border border-gray-100">
+                    <div class="w-16 h-16 bg-navy rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-vial text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-xl text-navy mb-4">
+                        IT Services & Testing Centre
+                    </h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Comprehensive testing solutions and procurement services for reliable IT operations.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• Computer Based Testing</li>
+                        <li>• Software Procurement</li>
+                        <li>• Hardware IT Solutions</li>
+                    </ul>
+                    <a href="services.html#testing" class="text-primary-blue font-semibold hover:text-navy transition-colors duration-200">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 4: IT Consultant -->
+                <div class="bg-white rounded-xl shadow-lg p-8 hover-lift border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-blue rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-heading font-semibold text-xl text-navy mb-4">
+                        IT Consultant
+                    </h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Strategic technology consulting to optimize your digital transformation journey.
+                    </p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li>• DevOps Configuration</li>
+                        <li>• ERP Implementation</li>
+                        <li>• Talent Outsourcing</li>
+                        <li>• IoT & Machine Learning</li>
+                    </ul>
+                    <a href="services.html#consulting" class="text-primary-blue font-semibold hover:text-navy transition-colors duration-200">
+                        Learn More <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CALL TO ACTION SECTION -->
+    <!-- Final CTA to encourage contact -->
+    <section class="py-20 bg-navy">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-6">
+                Ready to Transform Your Business?
+            </h2>
+            <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Let's discuss how our innovative technology solutions can drive your business forward. Get in touch with our experts today.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="contact.html" class="bg-white text-navy px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 hover-lift">
+                    Contact Our Team
+                </a>
+                <a href="services.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-navy transition-all duration-300">
+                    View All Services
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER SECTION -->
+    <!-- Company footer with links and contact information -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="w-10 h-10 bg-primary-blue rounded-lg flex items-center justify-center">
+                            <span class="text-white font-heading font-bold text-xl">T</span>
+                        </div>
+                        <span class="font-heading font-bold text-xl">Techub</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+                        Leading IT solutions provider delivering comprehensive technology services that drive business growth and digital transformation.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary-blue transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">About Us</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Services</a></li>
+                        <li><a href="products.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Products</a></li>
+                        <li><a href="blog.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-primary-blue transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-heading font-semibold text-lg mb-6">Contact Info</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-primary-blue"></i>
+                            info@techub.com
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-3 text-primary-blue"></i>
+                            +62 21 1234 5678
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mr-3 text-primary-blue mt-1"></i>
+                            Jakarta, Indonesia
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Techub. All rights reserved. | Part of Binawan Group Ecosystem</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // NAVIGATION SCROLL EFFECT
+        // Add background to navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-sticky');
+            } else {
+                navbar.classList.remove('navbar-sticky');
+            }
+        });
+        
+        // MOBILE MENU FUNCTIONALITY
+        // Toggle mobile menu visibility
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+        
+        mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+        
+        // SMOOTH SCROLLING FOR ANCHOR LINKS
+        // Enhanced smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // SCROLL ANIMATIONS
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply animation to service cards
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
